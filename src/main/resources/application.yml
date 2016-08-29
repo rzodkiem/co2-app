@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: development
+---
+spring:
+  profiles: development
+  datasource:
+    username: co2-app
+    password: co2-pass
+    url: jdbc:postgresql://localhost:5432/co2
+  jpa:
+    hiberante:
+      ddl-auto: create
+    show-sql: true
+  http:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+unfccc:
+  sheet-number: 0
