@@ -11,6 +11,8 @@ spring:
   jpa:
     hiberante:
       ddl-auto: create
+      hbm2ddl:
+        auto: true
     show-sql: true
   http:
     multipart:

@@ -3,6 +3,7 @@ package com.rzodkiewicz.michal.service.implementation
 import com.rzodkiewicz.michal.domain.Emission
 import com.rzodkiewicz.michal.repository.EmissionRepository
 import com.rzodkiewicz.michal.service.UploadService
+import com.rzodkiewicz.michal.util.ExcelSaxParser
 import org.apache.poi.openxml4j.opc.OPCPackage
 import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.xssf.eventusermodel.XSSFReader
@@ -23,6 +24,8 @@ class UploadServiceImpl implements UploadService{
     @Value('${unfccc.sheet-number}')
     private final int DATASET_SHEET_INDEX
     private final EmissionRepository emissionRepository
+    private List<Emission> emissions = []
+    private ExcelSaxParser handler
 
     @Autowired
     UploadServiceImpl(EmissionRepository emissionRepository){
@@ -30,7 +33,7 @@ class UploadServiceImpl implements UploadService{
     }
 
     @Override
-    void uploadUnfccDataset(MultipartFile file) throws IOException {
+    List<Emission> uploadUnfccDataset(MultipartFile file) throws IOException {
         OPCPackage opcPackage = OPCPackage.open(file.inputStream)
         XSSFReader reader = new XSSFReader(opcPackage)
         SharedStringsTable sharedStringsTable = reader.getSharedStringsTable()
@@ -39,8 +42,10 @@ class UploadServiceImpl implements UploadService{
         InputSource inputSource = new InputSource(sheet)
         parser.parse(inputSource)
         sheet.close()
-        List<Emission> emissions = parseDataToEntityList(sheet)
+        emissions = handler.emissionList
         emissionRepository.save(emissions)
+        emissions
+
     }
 
     private XMLReader fetchSheetParser(SharedStringsTable sst) throws SAXException {
@@ -48,8 +53,8 @@ class UploadServiceImpl implements UploadService{
                 XMLReaderFactory.createXMLReader(
                         "org.apache.xerces.parsers.SAXParser"
                 )
-        ExcelSaxParser handler = new ExcelSaxParser(sst)
-        parser.setContentHandler(handler)
+        handler = new ExcelSaxParser(sst)
+        parser.contentHandler = handler
         return parser
     }
 

@@ -9,7 +9,7 @@ import javax.persistence.Id
 class Emission {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id
 
     String countryCode
