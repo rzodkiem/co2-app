@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.util.Assert
 
+import javax.persistence.EntityManager
+
 @RunWith(SpringRunner)
 @SpringBootTest
 class EmissionServiceTest {
@@ -23,8 +25,12 @@ class EmissionServiceTest {
     private final int COUNTRY_SECTOR_RECORDS_COUNT = 184
     private final int COUNTRY_TIME_RECORDS_COUNT = 5490
     private final int SECTORS_TIME_RECORDS_COUNT = 700
+
     @Autowired
     private EmissionService emissionService
+
+    @Autowired
+    EntityManager entityManager
 
 
     List<String> countries = ['AT', 'BE']
@@ -58,6 +64,7 @@ class EmissionServiceTest {
 
     @Test
     void testCanGetByCountriesAndSectors(){
+        entityManager.
         request.type= EmissionFilterType.COUNTRY_SECTOR
         response = emissionService.fetchFilteredEmission(request)
         Assert.isTrue(response.size() == COUNTRY_SECTOR_RECORDS_COUNT)

@@ -1,6 +1,8 @@
 package com.rzodkiewicz.michal.controller
 
 import com.rzodkiewicz.michal.domain.Emission
+import com.rzodkiewicz.michal.dto.DropdownDto
+import com.rzodkiewicz.michal.dto.Result
 import com.rzodkiewicz.michal.enums.Sector
 import com.rzodkiewicz.michal.service.EmissionService
 import com.rzodkiewicz.michal.util.EmissionFilterRequest
@@ -10,12 +12,14 @@ import io.swagger.annotations.ApiParam
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = '/emission')
 @Api
 class EmissionController {
@@ -31,7 +35,11 @@ class EmissionController {
     ResponseEntity getSectors(){
         try{
             Set<Sector> sectors = emissionService.getSectors()
-            ResponseEntity.ok(sectors)
+            Set<Result> results= []
+            sectors.each{ it->
+                results.add(new Result(name: it, value: it, text: it))
+            }
+            ResponseEntity.ok(new DropdownDto(results: results))
         }catch(Exception e){
             e.printStackTrace()
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getStackTrace())
@@ -42,7 +50,12 @@ class EmissionController {
     ResponseEntity getCountries(){
         try{
             Set<String> countries = emissionService.getCountries()
-            ResponseEntity.ok(countries)
+            Set<Result> results = []
+            countries.each {it->
+                results.add(new Result(name: it, value: it, text: it))
+            }
+
+            ResponseEntity.ok(new DropdownDto(results: results))
         }catch(Exception e){
             e.printStackTrace()
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getStackTrace())
