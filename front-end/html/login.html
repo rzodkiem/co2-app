@@ -1,0 +1,38 @@
+<div class="page-container">
+    <div class="page-row">
+        <div class="page-col">
+            <div class="page-container__top-bar"></div>
+            <div class="login-container">
+                <img class="logo" src="/images/logo.svg" alt="CO2">
+            </div>
+        </div>
+    </div>
+    <div class="page-row">
+        <form class="page-col relative" ng-submit="login.submitForm()">
+            <div class="login-container">
+                <label class="login-input__container">
+                    <input placeholder="Username" ng-disabled="login.requesting" class="login-input" type="text" ng-model="login.params.username">
+                    <span class="login-input__border-bottom"></span>
+                </label>
+                <label class="login-input__container">
+                    <input placeholder="Password" ng-disabled="login.requesting" class="login-input" type="password" ng-model="login.params.password">
+                    <span class="login-input__border-bottom"></span>
+                </label>
+                <button class="login-button" ng-disabled="login.requesting" type="submit">Login</button>
+            </div>
+            <div ng-if="login.requesting" class="loader-container">
+                <div class="loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="page-row">
+        <div class="page-col footer no-border">
+            <div>Some footer</div>
+            <div class="page-container__bottom-bar"></div>
+        </div>
+    </div>
+</div>
