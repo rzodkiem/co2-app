@@ -3,6 +3,7 @@ import 'babel-polyfill';
 // import '../scss/preload.scss';
 import '../scss/app.scss';
 
+//External dependencies
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import 'isteven-angular-multiselect/isteven-multi-select.js'
@@ -12,10 +13,17 @@ import ngFileUpload from 'ng-file-upload';
 import tcChartjs from 'tc-angular-chartjs';
 import Chart from 'chart.js';
 
+
+//Internal dependecies
 import Router from './router';
 
+import Co2Controller from './controllers/co2.controller';
+import LoginController from './controllers/login.controller';
 
-const MODULE_NAME = 'co2';
+
+import LoginService from './services/login.service';
+
+const MODULE_NAME = 'Co2';
 
 angular.module(MODULE_NAME,
     [
@@ -46,6 +54,11 @@ angular.module(MODULE_NAME,
         online: 'Online',
         offline: 'Offline'
     })
+
+    .controller('Co2Controller', Co2Controller)
+    .controller('LoginController', LoginController)
+
+    .service('LoginService', LoginService)
 ;
 
 export default MODULE_NAME;

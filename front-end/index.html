@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="HotSpots" ng-controller="HotSpotsController as hotSpots">
+<html ng-app="Co2" ng-controller="Co2Controller as co2">
 <head>
-    <title>HotSpots</title>
+    <title>CO2 Insight</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -154,11 +154,11 @@
     </style>
 
 </head>
-<body ng-class="{ 'fullscreen-safari' : hotSpots.fullscreenSafari }">
+<body ng-class="{ 'fullscreen-safari' : co2.fullscreenSafari }">
 
-<div class="main-container" ng-if="!hotSpots.showLoader" ui-view="main"></div>
+<div class="main-container" ng-if="!co2.showLoader" ui-view="main"></div>
 
-<div ng-if="hotSpots.showLoader" class="loader-container">
+<div ng-if="co2.showLoader" class="loader-container">
     <!--<div class="loader">
         <div></div>
         <div></div>
@@ -179,8 +179,6 @@
         <div class="sk-circle12 sk-child"></div>
     </div>
 </div>
-
-<message-modal></message-modal>
 
 </body>
 </html>
