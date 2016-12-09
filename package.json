@@ -2,7 +2,7 @@
   "name": "co2",
   "version": "1.0.0",
   "description": "",
-  "license": "UNLICENCED",
+  "license": "UNLICENSED",
   "author": "rzodkiewiczmichal@gmail.com",
   "scripts": {
     "build": "rimraf src/main/resources/static && webpack --bail --progress --profile",
@@ -16,7 +16,6 @@
   "private": true,
   "dependencies": {
     "angular": "1.5.x",
-    "angular-touch": "^1.5.8",
     "angular-ui-bootstrap": "^2.1.4",
     "angular-ui-router": "0.3.1",
     "bootstrap-sass": "3.x.x",

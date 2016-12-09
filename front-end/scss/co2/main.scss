@@ -1,0 +1,16 @@
+body{
+  background-color: #388E3C;
+  color: #FFF;
+}
+
+.main-container {
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 2;
+}
