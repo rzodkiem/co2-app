@@ -1,11 +1,11 @@
 package com.rzodkiewicz.michal.service.implementation
 
 import com.rzodkiewicz.michal.domain.Emission
-import com.rzodkiewicz.michal.enums.EmissionFilterType
-import com.rzodkiewicz.michal.enums.Sector
+import com.rzodkiewicz.michal.util.enums.EmissionFilterType
+import com.rzodkiewicz.michal.util.enums.Sector
 import com.rzodkiewicz.michal.repository.EmissionRepository
 import com.rzodkiewicz.michal.service.EmissionService
-import com.rzodkiewicz.michal.util.EmissionFilterRequest
+import com.rzodkiewicz.michal.dto.EmissionFilterRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

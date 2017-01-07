@@ -1,9 +1,8 @@
 package com.rzodkiewicz.michal.service
 
 import com.rzodkiewicz.michal.domain.Emission
-import com.rzodkiewicz.michal.enums.CountryCode
-import com.rzodkiewicz.michal.enums.Sector
-import com.rzodkiewicz.michal.util.EmissionFilterRequest
+import com.rzodkiewicz.michal.util.enums.Sector
+import com.rzodkiewicz.michal.dto.EmissionFilterRequest
 import org.springframework.stereotype.Service
 
 @Service

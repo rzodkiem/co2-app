@@ -1,8 +1,8 @@
 package com.rzodkiewicz.michal.service
 
 import com.rzodkiewicz.michal.domain.Emission
-import com.rzodkiewicz.michal.enums.EmissionFilterType
-import com.rzodkiewicz.michal.util.EmissionFilterRequest
+import com.rzodkiewicz.michal.util.enums.EmissionFilterType
+import com.rzodkiewicz.michal.dto.EmissionFilterRequest
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired

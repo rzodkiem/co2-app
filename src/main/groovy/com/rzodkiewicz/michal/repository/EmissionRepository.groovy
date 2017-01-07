@@ -1,8 +1,7 @@
 package com.rzodkiewicz.michal.repository
 
 import com.rzodkiewicz.michal.domain.Emission
-import com.rzodkiewicz.michal.enums.CountryCode
-import com.rzodkiewicz.michal.enums.Sector
+import com.rzodkiewicz.michal.util.enums.Sector
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param

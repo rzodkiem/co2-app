@@ -1,4 +1,4 @@
-package com.rzodkiewicz.michal.enums
+package com.rzodkiewicz.michal.util.enums
 
 enum XssfDataType {
     BOOLEAN,

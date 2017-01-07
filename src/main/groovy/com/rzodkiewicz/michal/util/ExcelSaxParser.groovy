@@ -1,7 +1,7 @@
 package com.rzodkiewicz.michal.util
 
 import com.rzodkiewicz.michal.domain.Emission
-import com.rzodkiewicz.michal.enums.XssfDataType
+import com.rzodkiewicz.michal.util.enums.XssfDataType
 import org.apache.poi.xssf.model.SharedStringsTable
 import org.apache.poi.xssf.usermodel.XSSFRichTextString
 import org.slf4j.Logger

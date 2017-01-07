@@ -3,9 +3,9 @@ package com.rzodkiewicz.michal.controller
 import com.rzodkiewicz.michal.domain.Emission
 import com.rzodkiewicz.michal.dto.DropdownDto
 import com.rzodkiewicz.michal.dto.Result
-import com.rzodkiewicz.michal.enums.Sector
+import com.rzodkiewicz.michal.util.enums.Sector
 import com.rzodkiewicz.michal.service.EmissionService
-import com.rzodkiewicz.michal.util.EmissionFilterRequest
+import com.rzodkiewicz.michal.dto.EmissionFilterRequest
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
