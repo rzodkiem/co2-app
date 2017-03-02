@@ -31,6 +31,16 @@ export default function Router ($urlRouterProvider, $locationProvider, $statePro
                 }
             }
         })
+        .state('app.main',{
+            url: '/main',
+            views:{
+                app:{
+                    template: require('../html/table.html'),
+                    controller: 'TableController',
+                    controllerAs: 'table'
+                }
+            }
+        })
         .state('app.table', {
             url: '/table',
             views:{
@@ -63,5 +73,5 @@ export default function Router ($urlRouterProvider, $locationProvider, $statePro
         });
 
     $locationProvider.html5Mode(false);
-    $urlRouterProvider.otherwise('/table');
+    $urlRouterProvider.otherwise('/main');
 }

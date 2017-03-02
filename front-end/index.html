@@ -7,10 +7,6 @@
 <body>
 <style>
 
-    body{
-        background-color: #388E3C;
-        color: #FFF;
-    }
 
     .spinner {
         margin: 100px auto;
@@ -21,7 +17,8 @@
     }
 
     .spinner > div {
-        background-color: #FFEB3B;
+        top: 30%;
+        background-color: #2e5c2e;
         height: 100%;
         width: 6px;
         display: inline-block;
@@ -65,7 +62,7 @@
            }
     }
 </style>
-<div class="container-fluid main-container" ng-if="!co2.showLoader" ui-view="main">
+<div class="main-container" ng-if="!co2.showLoader" ui-view="main">
 
 </div>
 <div class="spinner" ng-if="co2.showLoader">

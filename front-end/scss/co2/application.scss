@@ -1,0 +1,32 @@
+.navbar-custom {
+  background-color: $dark-green;
+  color: $yellow;
+  border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+  color: $yellow;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+  color: $dark-yellow;
+  background-color: $very-dark-green;
+}
+
+.nav > li > a:hover, .nav > li > a:focus{
+  color: $dark-yellow;
+  background-color: $very-dark-green;
+}
+
+.navbar-custom .navbar-brand {
+  color:$yellow;
+}
+
+.navbar-right{
+  margin-right: 2vw;
+
+}
+
+
