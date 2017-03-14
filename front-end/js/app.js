@@ -10,6 +10,8 @@ import 'ng-storage';
 import ngFileUpload from 'ng-file-upload';
 import tcChartjs from 'tc-angular-chartjs';
 //import Chart from 'chart.js';
+import 'angular-simple-sidebar/angular-simple-sidebar.min.js' //from '../../node_modules/angular-simple-sidebar/angular-simple-sidebar.min';
+import ngSidebar from '../../node_modules/angular-sidebar/src/index.js';
 
 /**Angular configuration **/
 import Router from './router';
@@ -29,7 +31,10 @@ angular.module(ANGULAR_MODULE_NAME,
     [
         uiRouter,
         ngFileUpload,
-        tcChartjs
+        tcChartjs,
+        'angular-simple-sidebar',
+        ngSidebar
+
     ])
 
     .config(Router)

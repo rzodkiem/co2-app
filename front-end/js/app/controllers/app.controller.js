@@ -4,6 +4,12 @@ export default class AppController{
         this.showLoader = false;
         this.$scope = $scope;
         this.$state = $state;
-        console.log(this.$scope);
+
+
+    }
+
+    openFilters(){
+        console.log('opening filters');
+        this.$scope.$broadcast('openSidebar');
     }
 }

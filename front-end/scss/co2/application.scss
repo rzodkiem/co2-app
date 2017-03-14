@@ -29,4 +29,18 @@
 
 }
 
+.icon-filter{
+  display: block;
+  //float: left;
+  width: 20px;
+  height: 20px;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  position: relative;
+  background: url("../public/hamburger.svg") center center no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
 
