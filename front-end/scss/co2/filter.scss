@@ -1,0 +1,95 @@
+.side-nav{
+
+
+
+  &__header{
+    height: 50px;
+    background-color: $very-dark-green;
+  }
+
+  &__container{
+    background-color: $very-dark-green;
+    border-right: 5px solid $yellow;
+
+  }
+
+  &__content{
+
+  }
+
+  &__header-text{
+    margin-top: 1vh;
+    font-size: 2em;
+    color: $light-yellow;
+    margin-left: 2vw;
+  }
+}
+
+.icon-back{
+  display: block;
+  float: left;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background: url("../public/icon-back.svg") center center no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+$autofill-select-list-highlight: blue;
+$autofill-select-focus-border: blue;
+$autofill-select-caret: #a3a3a3;
+$autofill-select-list-border: #000000;
+$autofill-select-border: $light-yellow;
+$text-color: #000000;
+$label-color: #c5c6c7;
+
+.angucomplete-input {
+  border: 1px solid $autofill-select-border;
+  border-radius: 0.375em;
+  padding: 0 30px 0 7px;
+  appearance: none;
+  line-height: 3;
+  display: block;
+  outline: none;
+  width: 90%;
+  background-color: $light-yellow;
+  color: $very-dark-green;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto 0 auto;
+  font-weight: 100;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:focus {
+    border-color: $autofill-select-focus-border;
+    background-color: white;
+    color: $very-dark-green;
+  }
+}
+
+.angucomplete-dropdown {
+  background-color: $light-yellow;
+  color: $very-dark-green;
+  //width: 90%;
+  padding: 7px;
+}
+
+.angucomplete-row {
+  padding: 7px;
+  cursor: pointer;
+
+  &.hover {
+    background-color: #0098fe;
+  }
+}
+
+.filter-label{
+  margin-top: 1vh;
+  line-height: 3;
+  color: $light-yellow;
+  margin-left: 2vw;
+}

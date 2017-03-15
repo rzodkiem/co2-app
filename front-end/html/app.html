@@ -4,26 +4,95 @@
 
     <ul class="nav navbar-nav">
         <li><div class="icon-filter" ng-click="app.openFilters()"></div></li>
-        <li><a href="#">Strona Główna</a></li>
-        <li><a href="#table">Tabele</a></li>
-        <li><a href="#maps">Mapy</a></li>
-        <li><a href="#chart">Wykresy</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#table">Table</a></li>
+        <li><a href="#maps">Maps</a></li>
+        <li><a href="#chart">Charts</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#admin">Panel administratora</a></li>
+        <li><a href="#admin">Admin panel</a></li>
     </ul>
 </nav>
 
 <ng-sidebar class="js-side-nav side-nav" no-drag>
     <nav class="js-side-nav-container side-nav__container">
-        <button class="js-menu-hide side-nav__hide">close</button>
-        <header class="side-nav__header">
-            Side Nav
-        </header>
-        <ul class="side-nav__content">
+        <div class="side-nav__header">
+            <div class="js-menu-hide side-nav__hide icon-back" style="color: black"></div>
+        </div>
+        <!--<ul class="side-nav__content">
             <li>Two</li>
             <li>Three</li>
             <li>Four</li>
-        </ul>
+        </ul>-->
+        <div class="side-nav__header-text">
+            Select filters
+        </div>
+        <div class="side-nav__content">
+
+            <div class="filter-label">
+                Country
+            </div>
+            <div angucomplete-alt id="country"
+                 placeholder="Search..."
+                 pause="100"
+                 selected-object="app.selectFilterValue"
+                 local-data="app.countries"
+                 search-fields="name"
+                 title-field="name"
+                 minlength="1"
+                 input-class="angucomplete-input"
+                 match-class="highlight"></div>
+
+
+
+            <div class="filter-label">
+                Section
+            </div>
+        <div angucomplete-alt id="section"
+             placeholder="Search..."
+             pause="100"
+             selected-object="app.selectFilterValue"
+             local-data="app.sections"
+             search-fields="name"
+             title-field="name"
+             minlength="1"
+             input-class="angucomplete-input"
+             match-class="highlight">
+        </div>
+
+            <div class="filter-label">
+                From year
+            </div>
+            <div angucomplete-alt id="startYear"
+                 placeholder="Search..."
+                 pause="100"
+                 selected-object="app.startYear"
+                 local-data="app.years"
+                 search-fields="name"
+                 title-field="name"
+                 minlength="1"
+                 input-class="angucomplete-input"
+                 match-class="highlight">
+            </div>
+
+            <div class="filter-label">
+                To year
+            </div>
+            <div angucomplete-alt id="endYear"
+                 placeholder="Search..."
+                 pause="100"
+                 selected-object="app.endYear"
+                 local-data="app.endYears"
+                 search-fields="name"
+                 title-field="name"
+                 minlength="1"
+                 input-class="angucomplete-input"
+                 match-class="highlight">
+            </div>
+
+        </div>
+
+
+        </div>
     </nav>
 </ng-sidebar>
