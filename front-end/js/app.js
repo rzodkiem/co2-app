@@ -26,6 +26,8 @@ import TableController from './app/controllers/table.controller.js';
 import ChartController from './app/controllers/chart.controller.js';
 import MapController from './app/controllers/map.controller.js';
 
+import AppService from './app/service/app.service.js';
+
 const ANGULAR_MODULE_NAME = 'co2Insight';
 
 angular.module(ANGULAR_MODULE_NAME,
@@ -35,7 +37,8 @@ angular.module(ANGULAR_MODULE_NAME,
         tcChartjs,
         'angular-simple-sidebar',
         ngSidebar,
-        'angucomplete-alt'
+        'angucomplete-alt',
+        'isteven-multi-select'
 
     ])
 
@@ -48,5 +51,7 @@ angular.module(ANGULAR_MODULE_NAME,
     .controller('TableController', TableController)
     .controller('ChartController', ChartController)
     .controller('MapController', MapController)
+
+    .service('AppService', AppService)
 
 ;

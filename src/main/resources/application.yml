@@ -9,10 +9,9 @@ spring:
     password: co2-pass
     url: jdbc:postgresql://localhost:5432/co2
   jpa:
+    generate-ddl: false
     hiberante:
-      ddl-auto: create
-      hbm2ddl:
-        auto: true
+      ddl-auto: validate
     show-sql: true
   http:
     multipart:

@@ -1,30 +1,21 @@
 export default class AppController{
     /*@ngInject*/
-    constructor($scope, $state){
+    constructor($scope, $state, AppService){
+
         this.showLoader = false;
+
+        //global variables
         this.$scope = $scope;
         this.$state = $state;
+        this.AppService = AppService;
+
+        //initialization for model
         this.selectedCountry = {};
         this.selectedSection = {};
-        this.countries = [
-            {
-                name: 'Poland'
-            },
-            {
-                name: 'Germany'
-            }
 
-        ];
-
-        this.datepickerOptions = {
-            datepickerMode:"'year'",
-            minMode:"'year'",
-            minDate:"minDate",
-            showWeeks:"false",
-        };
-
-        this.format = 'yyyy';
-
+        //calling initial back-end queries
+        this.getCountries();
+        this.getSectors();
 
     }
 
@@ -34,5 +25,33 @@ export default class AppController{
 
     selectFilterValue(data){
         console.log(data);
+    }
+
+    getCountries(){
+        this.AppService.getCountries().then(response => {
+            if(response.status != 200){
+                //TODO: notify about error
+            }else{
+                this.countries = response.data;
+            }
+        })
+    }
+
+    getSectors(){
+        this.AppService.getSectors().then(response => {
+            if(response.status != 200){
+                //TODO: notify about error
+            }else{
+                this.sections = response.data;
+            }
+        })
+    }
+
+    clearFilters(){
+        //TODO: clear all inputs
+    }
+
+    confirmFilters(){
+
     }
 }

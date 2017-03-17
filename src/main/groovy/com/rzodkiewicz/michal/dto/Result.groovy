@@ -4,4 +4,5 @@ class Result{
     String name
     String value
     String text
+    boolean ticked = false
 }

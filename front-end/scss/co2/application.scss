@@ -43,4 +43,30 @@
   background-size: contain;
 }
 
+.buttons-container{
+  margin: 3vh 2vw 3vh 2vw;
+
+  .filter-button{
+    font-size: large;
+    width: 150px;
+    background: $light-yellow;
+    border-radius: 50px;
+    padding: 1vh 0 1vh 0;
+    border: none;
+    color: $dark-green;
+    font-weight: 500;
+
+    &.left{
+      float: left;
+    }
+
+    &.right{
+      float: right;
+    }
+  }
+}
+
+
+
+
 

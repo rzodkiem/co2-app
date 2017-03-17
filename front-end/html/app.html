@@ -32,33 +32,29 @@
             <div class="filter-label">
                 Country
             </div>
-            <div angucomplete-alt id="country"
-                 placeholder="Search..."
-                 pause="100"
-                 selected-object="app.selectFilterValue"
-                 local-data="app.countries"
-                 search-fields="name"
-                 title-field="name"
-                 minlength="1"
-                 input-class="angucomplete-input"
-                 match-class="highlight"></div>
 
+            <div isteven-multi-select
+                 input-model="app.countries"
+                 output-model="app.selectedCountries"
+                 button-label="name"
+                 item-label="name"
+                 tick-property="ticked"
+                    >
 
+            </div>
 
             <div class="filter-label">
                 Section
             </div>
-        <div angucomplete-alt id="section"
-             placeholder="Search..."
-             pause="100"
-             selected-object="app.selectFilterValue"
-             local-data="app.sections"
-             search-fields="name"
-             title-field="name"
-             minlength="1"
-             input-class="angucomplete-input"
-             match-class="highlight">
-        </div>
+
+            <div isteven-multi-select
+                 input-model="app.countries"
+                 output-model="app.selectedCountries"
+                 button-label="name"
+                 item-label="name"
+                 tick-property="ticked"
+                    >
+            </div>
 
             <div class="filter-label">
                 From year
@@ -91,8 +87,9 @@
             </div>
 
         </div>
-
-
+        <div class="buttons-container">
+            <button class="filter-button left">Clear</button>
+            <button class="filter-button right">Filter</button>
         </div>
     </nav>
 </ng-sidebar>

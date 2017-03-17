@@ -35,7 +35,7 @@ class EmissionController {
             sectors.each{ it->
                 results.add(new Result(name: it, value: it, text: it))
             }
-            ResponseEntity.ok(new DropdownDto(results: results))
+            ResponseEntity.ok(results)
         }catch(Exception e){
             e.printStackTrace()
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getStackTrace())
@@ -51,9 +51,23 @@ class EmissionController {
                 results.add(new Result(name: it, value: it, text: it))
             }
 
-            ResponseEntity.ok(new DropdownDto(results: results))
+            ResponseEntity.ok(results)
         }catch(Exception e){
             e.printStackTrace()
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getStackTrace())
+        }
+    }
+
+    @RequestMapping(value = '/years', method = RequestMethod.GET)
+    ResponseEntity getYears(){
+        try{
+            Set<Integer> years = emissionService.getYears();
+            Set<Result> results = [];
+            years.each { it ->
+                results.add(new Result(name: it, value: it, text: it));
+            }
+            ResponseEntity.ok(results);
+        }catch (Exception e){
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getStackTrace())
         }
     }
