@@ -1,7 +1,7 @@
 export default class AppController{
     /*@ngInject*/
-    constructor($scope, $state, AppService){
-
+    constructor($scope, $state, $timeout, AppService){
+        this.$timeout = $timeout;
         this.showLoader = false;
 
         //global variables
@@ -55,21 +55,15 @@ export default class AppController{
     }
 
     clearFilters(){
-        console.log('clear filters');
         this.startYear = undefined;
         this.endYear = undefined;
         this.$scope.$broadcast('angucomplete-alt:clearInput');
         this.selectedCountries = [];
         this.selectedSectors = [];
         this.clearMultiselects();
-        console.log(this.startYear);
     }
 
     confirmFilters(){
-        console.log(this.countries);
-        console.log(this.sectors);
-        console.log(this.startYear);
-        console.log(this.endYear);
         this.AppService.getEmissions(
             this.startYear.title, this.endYear.title, this.selectedCountries, this.selectedSectors
 
@@ -78,8 +72,9 @@ export default class AppController{
                     this.$scope.$broadcast('hideSidebar');
 
                 }else{
-                    this.emissions = response.data;
-                    console.log(this.emissions);
+                    this.$scope.$broadcast('emissionsLoadedEvent', {
+                        data: response.data
+                    })
                     this.$scope.$broadcast('hideSidebar');
                 }
             })

@@ -13,6 +13,7 @@ import tcChartjs from 'tc-angular-chartjs';
 import 'angular-simple-sidebar/angular-simple-sidebar.min.js' //from '../../node_modules/angular-simple-sidebar/angular-simple-sidebar.min';
 import ngSidebar from '../../node_modules/angular-sidebar/src/index.js';
 import 'angucomplete-alt';
+import uiGrid from 'angular-ui-grid';
 
 /**Angular configuration **/
 import Router from './router';
@@ -38,7 +39,8 @@ angular.module(ANGULAR_MODULE_NAME,
         'angular-simple-sidebar',
         ngSidebar,
         'angucomplete-alt',
-        'isteven-multi-select'
+        'isteven-multi-select',
+        uiGrid
 
     ])
 
