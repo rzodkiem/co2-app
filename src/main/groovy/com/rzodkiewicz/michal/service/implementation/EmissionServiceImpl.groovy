@@ -9,6 +9,8 @@ import com.rzodkiewicz.michal.dto.EmissionFilterRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
+import javax.validation.OverridesAttribute
+
 @Service
 class EmissionServiceImpl implements EmissionService {
 
@@ -58,5 +60,10 @@ class EmissionServiceImpl implements EmissionService {
     @Override
     Set<String> getCountries() {
         emissionRepository.getCountries()
+    }
+
+    @Override
+    Set<Integer> getYears(){
+        emissionRepository.getYears()
     }
 }

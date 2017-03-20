@@ -8,8 +8,8 @@ class EmissionFilterRequest {
 
     Integer startDate
     Integer endDate
-    List<CountryCode> countries
-    List<Sector> sectors
+    List<String> countries
+    List<String> sectors
     EmissionFilterType type
 
 }

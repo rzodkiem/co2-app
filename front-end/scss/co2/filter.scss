@@ -93,3 +93,57 @@ $label-color: #c5c6c7;
   color: $light-yellow;
   margin-left: 2vw;
 }
+
+.multiSelect > button {
+  color: $dark-green ;
+  background: $light-yellow ;
+  border: 1px solid $light-yellow ;
+  width: 90%;
+  margin: 0 auto 0 auto;
+  display: block;
+
+}
+
+.multiSelect > button:hover {
+  background-image: linear-gradient(#fff, $light-yellow);
+}
+
+
+.multiSelect .checkboxLayer {
+  width: 90%;
+  margin-left: 5%;
+  background-color: $light-yellow;
+  border: 1px solid $light-yellow ;
+  -webkit-box-shadow: 0 6px 12px $light-yellow ;
+  box-shadow: 0 6px 12px $light-yellow ;;
+
+}
+
+.multiSelect .show {
+  display: block !important;
+}
+
+.multiSelect .multiSelectItem {
+  color: $dark-green;
+}
+
+.multiSelect .inputFilter {
+  border: 1px solid $dark-green;
+  color: $dark-green;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.multiSelect .helperButton {
+  border: 1px solid $dark-green;
+  color: $light-yellow;
+  background-color: $dark-green;
+}
+
+.multiSelect .clearButton {
+  border: 1px solid $dark-green;
+  color: $light-yellow;
+  background-color: $dark-green;
+
+}
+

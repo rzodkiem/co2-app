@@ -16,6 +16,9 @@ interface EmissionRepository extends JpaRepository<Emission, Long> {
     @Query(""" SELECT DISTINCT e.countryName FROM Emission e ORDER BY e.countryName """)
     Set<String> getCountries()
 
+    @Query(""" SELECT DISTINCT e.year FROM Emission e ORDER BY e.year""")
+    Set<Integer> getYears();
+
     @Query(""" SELECT e FROM Emission e WHERE e.countryCode in (:codes) ORDER BY e.year""")
     Set<Emission> findAllByCountries(@Param('codes') Collection<String> codes)
 

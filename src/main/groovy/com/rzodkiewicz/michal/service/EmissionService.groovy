@@ -11,5 +11,6 @@ interface EmissionService {
     Set<Emission> fetchFilteredEmission(EmissionFilterRequest request)
     Set<Sector> getSectors()
     Set<String> getCountries()
+    Set<Integer> getYears()
 
 }

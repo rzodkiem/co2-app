@@ -48,8 +48,8 @@
             </div>
 
             <div isteven-multi-select
-                 input-model="app.countries"
-                 output-model="app.selectedCountries"
+                 input-model="app.sectors"
+                 output-model="app.selectedSectors"
                  button-label="name"
                  item-label="name"
                  tick-property="ticked"
@@ -63,7 +63,7 @@
                  placeholder="Search..."
                  pause="100"
                  selected-object="app.startYear"
-                 local-data="app.years"
+                 local-data="app.startYears"
                  search-fields="name"
                  title-field="name"
                  minlength="1"
@@ -78,7 +78,7 @@
                  placeholder="Search..."
                  pause="100"
                  selected-object="app.endYear"
-                 local-data="app.endYears"
+                 local-data="app.startYears"
                  search-fields="name"
                  title-field="name"
                  minlength="1"
@@ -88,8 +88,8 @@
 
         </div>
         <div class="buttons-container">
-            <button class="filter-button left">Clear</button>
-            <button class="filter-button right">Filter</button>
+            <button class="filter-button left" ng-click="app.clearFilters()">Clear</button>
+            <button class="filter-button right" ng-click="app.confirmFilters()">Filter</button>
         </div>
     </nav>
 </ng-sidebar>
