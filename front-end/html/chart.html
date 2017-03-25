@@ -1,1 +1,8 @@
-chart
+
+<div ng-if="chart.testData">
+    <canvas
+            tc-chartjs-bar
+            chart-data="chart.testData"
+            ></canvas>
+</div>
+<div ng-if="!chart.testData" class="info-text">No data loaded....</div>

@@ -9,7 +9,7 @@ import 'isteven-angular-multiselect/isteven-multi-select.js';
 import 'ng-storage';
 import ngFileUpload from 'ng-file-upload';
 import tcChartjs from 'tc-angular-chartjs';
-//import Chart from 'chart.js';
+import Chart from 'chart.js/src/chart.js';
 import 'angular-simple-sidebar/angular-simple-sidebar.min.js' //from '../../node_modules/angular-simple-sidebar/angular-simple-sidebar.min';
 import ngSidebar from '../../node_modules/angular-sidebar/src/index.js';
 import 'angucomplete-alt';
@@ -40,7 +40,9 @@ angular.module(ANGULAR_MODULE_NAME,
         ngSidebar,
         'angucomplete-alt',
         'isteven-multi-select',
-        uiGrid
+        uiGrid,
+ //       Chart,
+        tcChartjs
 
     ])
 
