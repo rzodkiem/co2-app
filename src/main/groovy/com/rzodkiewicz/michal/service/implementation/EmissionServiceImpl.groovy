@@ -1,7 +1,6 @@
 package com.rzodkiewicz.michal.service.implementation
 
-import com.rzodkiewicz.michal.domain.Emission
-import com.rzodkiewicz.michal.dto.EmissionChartDto
+import com.rzodkiewicz.michal.dto.EmissionDto
 import com.rzodkiewicz.michal.dto.FilterDto
 import com.rzodkiewicz.michal.repository.EmissionRepository
 import com.rzodkiewicz.michal.service.EmissionService
@@ -28,11 +27,9 @@ class EmissionServiceImpl implements EmissionService {
     }
 
     @Override
-    Set<Emission> fetchFilteredEmission(FilterDto request) {
-        def query = queryBuilderService.emissionQuery(request)
-        List<Emission> list = query.resultList
-        List<EmissionChartDto> charts = queryBuilderService.emissionChartQuery(request).getResultList()
-        list
+    EmissionDto fetchFilteredEmission(FilterDto request) {
+        new EmissionDto(tableData: queryBuilderService.emissionQuery(request).resultList,
+                countryChartData: queryBuilderService.emissionChartQuery(request).resultList)
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.rzodkiewicz.michal.controller
 
-import com.rzodkiewicz.michal.domain.Emission
 import com.rzodkiewicz.michal.dto.FilterDto
 import com.rzodkiewicz.michal.dto.FilterMultiselectDto
 import com.rzodkiewicz.michal.service.EmissionService
@@ -75,8 +74,7 @@ class EmissionController {
     @RequestMapping(value = '/emissions', consumes = 'application/json', method = RequestMethod.POST)
     ResponseEntity getEmissions(@ApiParam @RequestBody FilterDto request) {
         try{
-            Set<Emission> emissions = emissionService.fetchFilteredEmission(request)
-            ResponseEntity.ok(emissions)
+            ResponseEntity.ok(emissionService.fetchFilteredEmission(request))
         }catch(Exception e){
             e.printStackTrace()
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getStackTrace())

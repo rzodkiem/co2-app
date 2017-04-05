@@ -33,7 +33,6 @@ class QueryBuilderServiceImpl implements QueryBuilderService {
         Predicate where = criteriaBuilder.conjunction()
         query.select(emissionRoot)
         query.where(appendFilters(where, request, criteriaBuilder, emissionRoot))
-        def params = query.getParameters()
         entityManager.createQuery(query)
     }
 
