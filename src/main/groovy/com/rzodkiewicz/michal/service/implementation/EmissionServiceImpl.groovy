@@ -1,55 +1,38 @@
 package com.rzodkiewicz.michal.service.implementation
 
 import com.rzodkiewicz.michal.domain.Emission
-import com.rzodkiewicz.michal.util.enums.EmissionFilterType
-import com.rzodkiewicz.michal.util.enums.Sector
+import com.rzodkiewicz.michal.dto.EmissionChartDto
+import com.rzodkiewicz.michal.dto.FilterDto
 import com.rzodkiewicz.michal.repository.EmissionRepository
 import com.rzodkiewicz.michal.service.EmissionService
-import com.rzodkiewicz.michal.dto.EmissionFilterRequest
+import com.rzodkiewicz.michal.service.QueryBuilderService
+import com.rzodkiewicz.michal.util.enums.Sector
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
-import javax.validation.OverridesAttribute
+import javax.persistence.EntityManager
 
 @Service
 class EmissionServiceImpl implements EmissionService {
 
     private final EmissionRepository emissionRepository
+    private final QueryBuilderService queryBuilderService
+    private final EntityManager entityManager
 
     @Autowired
-    EmissionServiceImpl(EmissionRepository emissionRepository){
+    EmissionServiceImpl(EmissionRepository emissionRepository, QueryBuilderService queryBuilderService,
+                        EntityManager entityManager) {
         this.emissionRepository = emissionRepository
+        this.queryBuilderService = queryBuilderService
+        this.entityManager = entityManager
     }
 
     @Override
-    Set<Emission> fetchFilteredEmission(EmissionFilterRequest request) {
-        Set<Emission> response = []
-        switch(request.type){
-            case EmissionFilterType.COUNTRY:
-                response = emissionRepository.findAllByCountries(request.countries.collect{it.toString()})
-                break
-            case EmissionFilterType.SECTOR:
-                response = emissionRepository.findAllBySectors(request.sectors.collect{it.toString()})
-                break
-            case EmissionFilterType.TIME:
-                response = emissionRepository.findAllByDateRange(request.startDate, request.endDate)
-                break
-            case EmissionFilterType.COUNTRY_SECTOR:
-                response = emissionRepository.findAllBySectorsAndCountries(request.sectors.collect{it.toString()}, request.countries.collect{it.toString()})
-                break
-            case EmissionFilterType.COUNTRY_TIME:
-                response = emissionRepository.findAllByCountriesAndDateRange(request.countries.collect{it.toString()}, request.startDate, request.endDate)
-                break
-            case EmissionFilterType.SECTOR_TIME:
-                response = emissionRepository.findAllBySectorsAndDateRange(request.sectors.collect{it.toString()}, request.startDate, request.endDate)
-                break
-            case EmissionFilterType.COUNTRY_SECTOR_TIME:
-                response = emissionRepository.findAllByCountriesAndSectorsAndDateRange(request.countries.collect{it.toString()}, request.sectors.collect{it.toString()},
-                                                                                        request.startDate, request.endDate)
-                break
-        }
-
-        response
+    Set<Emission> fetchFilteredEmission(FilterDto request) {
+        def query = queryBuilderService.emissionQuery(request)
+        List<Emission> list = query.resultList
+        List<EmissionChartDto> charts = queryBuilderService.emissionChartQuery(request).getResultList()
+        list
     }
 
     @Override

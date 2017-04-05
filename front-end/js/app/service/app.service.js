@@ -27,7 +27,6 @@ export default class AppService{
     }
 
     getEmissions(startYear, endYear, countries, sectors){
-        let filterType = this.findFilterType(startYear, endYear, countries, sectors);
         return this.$http({
             method: 'POST',
             url: '/emission/emissions',
@@ -35,8 +34,7 @@ export default class AppService{
                 startDate: startYear,
                 endDate: endYear,
                 countries: this.parseObjects(countries),
-                sectors: this.parseObjects(sectors),
-                type: filterType
+                sectors: this.parseObjects(sectors)
             },
             headers:{
                 'Content-Type': 'application/json'
@@ -45,9 +43,6 @@ export default class AppService{
         })
     }
 
-    findFilterType(){
-        return 'COUNTRY_SECTOR_TIME';
-    }
 
     parseObjects(objects){
         let values = [];

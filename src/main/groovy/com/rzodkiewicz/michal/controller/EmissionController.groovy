@@ -1,18 +1,17 @@
 package com.rzodkiewicz.michal.controller
 
 import com.rzodkiewicz.michal.domain.Emission
-import com.rzodkiewicz.michal.dto.DropdownDto
-import com.rzodkiewicz.michal.dto.Result
-import com.rzodkiewicz.michal.util.enums.Sector
+import com.rzodkiewicz.michal.dto.FilterDto
+import com.rzodkiewicz.michal.dto.FilterMultiselectDto
 import com.rzodkiewicz.michal.service.EmissionService
-import com.rzodkiewicz.michal.dto.EmissionFilterRequest
+import com.rzodkiewicz.michal.util.enums.Sector
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @CrossOrigin
@@ -31,9 +30,9 @@ class EmissionController {
     ResponseEntity getSectors(){
         try{
             Set<Sector> sectors = emissionService.getSectors()
-            Set<Result> results= []
+            Set<FilterMultiselectDto> results = []
             sectors.each{ it->
-                results.add(new Result(name: it, value: it, text: it))
+                results.add(new FilterMultiselectDto(name: it, value: it, text: it))
             }
             ResponseEntity.ok(results)
         }catch(Exception e){
@@ -46,9 +45,9 @@ class EmissionController {
     ResponseEntity getCountries(){
         try{
             Set<String> countries = emissionService.getCountries()
-            Set<Result> results = []
+            Set<FilterMultiselectDto> results = []
             countries.each {it->
-                results.add(new Result(name: it, value: it, text: it))
+                results.add(new FilterMultiselectDto(name: it, value: it, text: it))
             }
 
             ResponseEntity.ok(results)
@@ -62,9 +61,9 @@ class EmissionController {
     ResponseEntity getYears(){
         try{
             Set<Integer> years = emissionService.getYears();
-            Set<Result> results = [];
+            Set<FilterMultiselectDto> results = [];
             years.each { it ->
-                results.add(new Result(name: it, value: it, text: it));
+                results.add(new FilterMultiselectDto(name: it, value: it, text: it));
             }
             ResponseEntity.ok(results);
         }catch (Exception e){
@@ -74,7 +73,7 @@ class EmissionController {
 
     @ApiOperation(value = 'Returns emission data based on filter in request body')
     @RequestMapping(value = '/emissions', consumes = 'application/json', method = RequestMethod.POST)
-    ResponseEntity getEmissions(@ApiParam @RequestBody EmissionFilterRequest request){
+    ResponseEntity getEmissions(@ApiParam @RequestBody FilterDto request) {
         try{
             Set<Emission> emissions = emissionService.fetchFilteredEmission(request)
             ResponseEntity.ok(emissions)

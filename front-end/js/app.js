@@ -27,7 +27,12 @@ import TableController from './app/controllers/table.controller.js';
 import ChartController from './app/controllers/chart.controller.js';
 import MapController from './app/controllers/map.controller.js';
 
+
+/** Angular Services **/
 import AppService from './app/service/app.service.js';
+
+/** Angular Factories **/
+import DataFactory from './app/factory/data.factory.js';
 
 const ANGULAR_MODULE_NAME = 'co2Insight';
 
@@ -42,7 +47,8 @@ angular.module(ANGULAR_MODULE_NAME,
         'isteven-multi-select',
         uiGrid,
  //       Chart,
-        tcChartjs
+        tcChartjs,
+        'ngStorage'
 
     ])
 
@@ -57,5 +63,7 @@ angular.module(ANGULAR_MODULE_NAME,
     .controller('MapController', MapController)
 
     .service('AppService', AppService)
+
+    .factory('DataFactory', DataFactory)
 
 ;
