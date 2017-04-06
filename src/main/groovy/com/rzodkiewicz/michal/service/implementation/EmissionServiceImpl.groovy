@@ -5,6 +5,7 @@ import com.rzodkiewicz.michal.dto.FilterDto
 import com.rzodkiewicz.michal.repository.EmissionRepository
 import com.rzodkiewicz.michal.service.EmissionService
 import com.rzodkiewicz.michal.service.QueryBuilderService
+import com.rzodkiewicz.michal.util.enums.AggregationType
 import com.rzodkiewicz.michal.util.enums.Sector
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -29,7 +30,9 @@ class EmissionServiceImpl implements EmissionService {
     @Override
     EmissionDto fetchFilteredEmission(FilterDto request) {
         new EmissionDto(tableData: queryBuilderService.emissionQuery(request).resultList,
-                countryChartData: queryBuilderService.emissionChartQuery(request).resultList)
+                countryChartData: queryBuilderService.emissionChartQuery(request, AggregationType.COUNTRY).resultList,
+                categoryChartData: queryBuilderService.emissionChartQuery(request, AggregationType.CATEGORY).resultList
+        )
     }
 
     @Override

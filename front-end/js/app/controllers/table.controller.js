@@ -13,7 +13,7 @@ export default class TableController{
 
         if (!this.emissions) {
             console.log('getting from local storage');
-            this.emissions = this.DataFactory.getEmission();
+            this.emissions = this.DataFactory.getTableData();
         }
 
     }

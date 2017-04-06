@@ -6,5 +6,5 @@ class EmissionDto {
 
     Set<Emission> tableData = new ArrayList<>()
     Set<EmissionChartDto> countryChartData = new ArrayList<>()
-    Set<EmissionChartDto> categoryChartDto = new ArrayList<>()
+    Set<EmissionChartDto> categoryChartData = new ArrayList<>()
 }

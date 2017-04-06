@@ -10,6 +10,21 @@ export default class AppController{
         this.DataFactory = DataFactory;
         this.AppService = AppService;
 
+        this.chartOptions = [
+            {
+                name: 'countryChartData',
+                display: 'Country',
+                chartTitle: 'Emission per Country'
+            },
+            {
+                name: 'categoryChartData',
+                display: 'Category',
+                chartTitle: 'Emission per Sector'
+            }
+        ];
+
+        this.selectedChart = this.chartOptions[0];
+
 
         //calling initial back-end queries
         this.getCountries();
@@ -90,5 +105,12 @@ export default class AppController{
         this.sectors.forEach(item => item.ticked = false);
 
 
+    }
+
+    changeChartData() {
+        this.$scope.$broadcast('chartDataChangedEvent', {
+            aggregation: this.selectedChart.name,
+            chartTitle: this.selectedChart.chartTitle,
+        })
     }
 }

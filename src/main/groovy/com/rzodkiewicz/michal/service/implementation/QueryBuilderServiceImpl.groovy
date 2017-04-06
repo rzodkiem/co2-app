@@ -4,6 +4,7 @@ import com.rzodkiewicz.michal.domain.Emission
 import com.rzodkiewicz.michal.dto.EmissionChartDto
 import com.rzodkiewicz.michal.dto.FilterDto
 import com.rzodkiewicz.michal.service.QueryBuilderService
+import com.rzodkiewicz.michal.util.enums.AggregationType
 import com.rzodkiewicz.michal.util.enums.FilterType
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -88,24 +89,24 @@ class QueryBuilderServiceImpl implements QueryBuilderService {
         where
     }
 
-    Query emissionChartQuery(FilterDto request) {
+    Query emissionChartQuery(FilterDto request, AggregationType aggregation) {
         CriteriaBuilder criteriaBuilder = entityManager.criteriaBuilder
         CriteriaQuery<EmissionChartDto> query = criteriaBuilder.createQuery(Emission.class)
         Root<Emission> emissionRoot = query.from(Emission.class)
         Predicate where = criteriaBuilder.conjunction()
-        appendFilters(where, request, criteriaBuilder, emissionRoot)
-        appendChartAggregation(query, emissionRoot, criteriaBuilder)
-        query.where(where)
+        appendChartAggregation(query, emissionRoot, criteriaBuilder, aggregation)
+        query.where(appendFilters(where, request, criteriaBuilder, emissionRoot))
         entityManager.createQuery(query)
 
     }
 
-    private void appendChartAggregation(CriteriaQuery query, Root emissionRoot, CriteriaBuilder criteriaBuilder) {
+    private void appendChartAggregation(CriteriaQuery query, Root emissionRoot, CriteriaBuilder criteriaBuilder,
+                                        AggregationType aggregation) {
         query.select(criteriaBuilder.construct(EmissionChartDto.class,
-                emissionRoot.get("countryName"),
+                emissionRoot.get(aggregation.columnName),
                 criteriaBuilder.sum(emissionRoot.get("emission")))
         )
-        query.groupBy(emissionRoot.get("countryName"))
+        query.groupBy(emissionRoot.get(aggregation.columnName))
     }
 
 

@@ -10,6 +10,15 @@
         <li><a href="#chart">Charts</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+        <li>
+            <select
+                    ng-options="item as item.display for item in app.chartOptions"
+                    ng-model="app.selectedChart"
+                    ng-change="app.changeChartData()"
+                    class="form-control chart-select">
+
+            </select>
+        </li>
         <li><a href="#admin">Admin panel</a></li>
     </ul>
 </nav>
