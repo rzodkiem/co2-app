@@ -10,7 +10,7 @@
         <li><a href="#chart">Charts</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li>
+        <li ng-if="app.$state.is('app.chart')">
             <select
                     ng-options="item as item.display for item in app.chartOptions"
                     ng-model="app.selectedChart"
