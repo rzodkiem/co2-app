@@ -1,26 +1,6 @@
 export default function Router ($urlRouterProvider, $locationProvider, $stateProvider){
 
     $stateProvider
-        .state('login', {
-            url: '/login',
-            views:{
-                main:{
-                    template: require('../html/login.html'),
-                    controller: 'LoginController',
-                    controllerAs: 'login'
-                }
-            }
-        })
-        .state('logout', {
-            url: '/logout',
-            views:{
-                main:{
-                    template: require('../html/logout.html'),
-                    controller: 'LogoutController',
-                    controllerAs: 'logout'
-                }
-            }
-        })
         .state('app', {
             abstract: true,
             views:{
@@ -70,7 +50,29 @@ export default function Router ($urlRouterProvider, $locationProvider, $statePro
                     controllerAs: 'map'
                 }
             }
-        });
+        })
+        .state('app.login', {
+            url: '/login',
+            views: {
+                app: {
+                    template: require('../html/login.html'),
+                    controller: 'LoginController',
+                    controllerAs: 'login'
+                }
+            }
+        })
+        .state('app.admin', {
+            url: '/admin',
+            views: {
+                app: {
+                    template: require('../html/admin.html'),
+                    controller: 'AdminController',
+                    controllerAs: 'admin'
+                }
+            }
+        })
+
+    ;
 
     $locationProvider.html5Mode(false);
     $urlRouterProvider.otherwise('/main');

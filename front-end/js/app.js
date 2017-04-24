@@ -26,13 +26,16 @@ import AppController from './app/controllers/app.controller.js';
 import TableController from './app/controllers/table.controller.js';
 import ChartController from './app/controllers/chart.controller.js';
 import MapController from './app/controllers/map.controller.js';
+import AdminController from './app/controllers/admin.controller.js';
 
 
 /** Angular Services **/
 import AppService from './app/service/app.service.js';
+import AdminService from './app/service/admin.service.js';
 
 /** Angular Factories **/
 import DataFactory from './app/factory/data.factory.js';
+import SessionFactory from './app/factory/session.factory.js';
 
 const ANGULAR_MODULE_NAME = 'co2Insight';
 
@@ -61,9 +64,12 @@ angular.module(ANGULAR_MODULE_NAME,
     .controller('TableController', TableController)
     .controller('ChartController', ChartController)
     .controller('MapController', MapController)
+    .controller('AdminController', AdminController)
 
     .service('AppService', AppService)
+    .service('AdminService', AdminService)
 
     .factory('DataFactory', DataFactory)
+    .factory('SessionFactory', SessionFactory)
 
 ;

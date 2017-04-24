@@ -1,6 +1,6 @@
 export default class AppController{
     /*@ngInject*/
-    constructor($scope, $state, $timeout, DataFactory, AppService) {
+    constructor($scope, $state, $timeout, DataFactory, AppService, SessionFactory) {
         this.$timeout = $timeout;
         this.showLoader = false;
 
@@ -9,6 +9,7 @@ export default class AppController{
         this.$state = $state;
         this.DataFactory = DataFactory;
         this.AppService = AppService;
+        this.isAdmin = SessionFactory.isAdmin();
 
         this.chartOptions = [
             {
