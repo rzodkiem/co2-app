@@ -9,13 +9,15 @@
                     <form accept-charset="UTF-8" role="form">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Username" name="email" type="text">
+                                <input class="form-control" placeholder="Username" name="email" type="text"
+                                       ng-model='login.credentials.username'>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Password" name="password" type="password"
-                                       value="">
+                                       value="" ng-model="login.credentials.password">
                             </div>
-                            <input class="btn btn-lg btn-success btn-block login__button" type="submit" value="Login">
+                            <input class="btn btn-lg btn-success btn-block login__button" type="submit" value="Login"
+                                    ng-click = login.submit()>
                         </fieldset>
                     </form>
                 </div>

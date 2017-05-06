@@ -32,6 +32,7 @@ import AdminController from './app/controllers/admin.controller.js';
 /** Angular Services **/
 import AppService from './app/service/app.service.js';
 import AdminService from './app/service/admin.service.js';
+import LoginService from './app/service/login.service.js';
 
 /** Angular Factories **/
 import DataFactory from './app/factory/data.factory.js';
@@ -68,6 +69,7 @@ angular.module(ANGULAR_MODULE_NAME,
 
     .service('AppService', AppService)
     .service('AdminService', AdminService)
+    .service('LoginService', LoginService)
 
     .factory('DataFactory', DataFactory)
     .factory('SessionFactory', SessionFactory)
