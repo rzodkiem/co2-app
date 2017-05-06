@@ -1,0 +1,33 @@
+.admin{
+  
+  &__container{
+    margin-top: 5%;
+    margin-left: 5%;
+  }
+  
+  &__row{
+    margin-top: 2%;
+  }
+
+  &__button{
+    color: $light-yellow;
+    background-color: $dark-green;
+    border-color: $dark-green;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    &.large{
+      font-size: large;
+
+    }
+
+  }
+
+  &__filename{
+    margin-left: 2%;
+  }
+}
+
+.column-centered{
+  margin: auto;
+}

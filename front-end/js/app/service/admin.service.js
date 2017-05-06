@@ -5,7 +5,19 @@ export default class AdminService {
         this.$http = $http;
     }
 
-    uploadEmissionFile(file) {
+    upload(file) {
+        var fd = new FormData();
+        fd.append('file', file);
+        return this.$http({
+
+            method: 'POST',
+            url: '/upload/unfccc',
+            data: fd,
+            transformRequest: angular.identity,
+            headers: {
+                'Content-Type': undefined
+            },
+        })
 
     }
 }

@@ -21,6 +21,7 @@
     "angular-ui-bootstrap": "^2.1.4",
     "angular-ui-grid": "^4.0.2",
     "angular-ui-router": "0.3.1",
+    "bootstrap-fileinput": "^4.3.9",
     "bootstrap-sass": "3.x.x",
     "chart.js": "2.x.x",
     "font-awesome": "4.6.x",
