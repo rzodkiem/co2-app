@@ -9,7 +9,7 @@ export default class TableController{
 
         this.$scope.$on('emissionsLoadedEvent', (event, data) => {
             this.emissions = data.data;
-        })
+        });
 
         if (!this.emissions) {
             console.log('getting from local storage');

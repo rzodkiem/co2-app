@@ -1,13 +1,12 @@
 export default function SessionFactory($sessionStorage) {
-    var factory = {
+
+    return {
 
         setSession: setSession,
         getUsername: getUsername,
         isAdmin: isAdmin
 
     };
-
-    return factory;
 
     function setSession(session) {
         $sessionStorage.role = session.authorities[0].authority;

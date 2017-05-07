@@ -48,7 +48,7 @@ export default class AppService{
         let values = [];
         objects.forEach(item => {
             values.push(item.name);
-        })
+        });
         return values;
     }
 

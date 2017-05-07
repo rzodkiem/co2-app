@@ -14,6 +14,7 @@ import 'angular-simple-sidebar/angular-simple-sidebar.min.js' //from '../../node
 import ngSidebar from '../../node_modules/angular-sidebar/src/index.js';
 import 'angucomplete-alt';
 import uiGrid from 'angular-ui-grid';
+import 'ng-notify';
 
 /**Angular configuration **/
 import Router from './router';
@@ -52,7 +53,8 @@ angular.module(ANGULAR_MODULE_NAME,
         uiGrid,
  //       Chart,
         tcChartjs,
-        'ngStorage'
+        'ngStorage',
+         'ngNotify'
 
     ])
 

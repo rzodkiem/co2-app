@@ -16,7 +16,7 @@ export default class AdminService {
             transformRequest: angular.identity,
             headers: {
                 'Content-Type': undefined
-            },
+            }
         })
 
     }

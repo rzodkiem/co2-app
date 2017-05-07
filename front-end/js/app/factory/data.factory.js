@@ -1,15 +1,14 @@
 export default function DataFactory($localStorage) {
     'ngInject';
-    var data,
-        factory = {
-            setEmission: setEmission,
-            getEmission: getEmission,
-            getTableData: getTableData,
-            getChartData: getChartData,
-            getCountryChartData: getCountryChartData,
-            getCategoryChartData: getCategoryChartData
-        };
-    return factory;
+
+    return {
+        setEmission: setEmission,
+        getEmission: getEmission,
+        getTableData: getTableData,
+        getChartData: getChartData,
+        getCountryChartData: getCountryChartData,
+        getCategoryChartData: getCategoryChartData
+    };
 
     function setEmission(emission) {
         $localStorage.emission = emission;

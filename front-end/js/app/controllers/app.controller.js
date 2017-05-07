@@ -1,9 +1,9 @@
 export default class AppController{
     /*@ngInject*/
-    constructor($scope, $state, $timeout, DataFactory, AppService, SessionFactory) {
+    constructor($scope, $state, $timeout, DataFactory, AppService, SessionFactory, ngNotify) {
         this.$timeout = $timeout;
         this.showLoader = false;
-
+        this.ngNotify = ngNotify;
         //global variables
         this.$scope = $scope;
         this.$state = $state;
@@ -37,38 +37,38 @@ export default class AppController{
         this.$scope.$broadcast('openSidebar');
     }
 
-    selectFilterValue(data){
-        console.log(data);
-    }
-
     getCountries(){
-        this.AppService.getCountries().then(response => {
-            if(response.status != 200){
-                //TODO: notify about error
-            }else{
-                this.countries = response.data;
-            }
-        })
+        this.AppService.getCountries()
+
+            .success(response => {
+                this.countries = response;
+            })
+            .error(() => {
+                this.ngNotify.set('Server error occurred during loading data', 'error');
+            })
+
     }
 
     getSectors(){
-        this.AppService.getSectors().then(response => {
-            if(response.status != 200){
-                //TODO: notify about error
-            }else{
-                this.sectors = response.data;
-            }
-        })
+        this.AppService.getSectors()
+            .success(response => {
+                this.sectors = response;
+            })
+            .error(() => {
+                this.ngNotify.set('Server error occurred during loading data', 'error');
+            })
     }
 
     getYears(){
-        this.AppService.getYears().then(response => {
-            if(response.status != 200){
+        this.AppService.getYears()
+            .success((response) => {
+                this.startYears = response;
+            })
+            .error(() => {
+                this.ngNotify.set('Server error occurred during loading data', 'error');
+            })
 
-            }else{
-                this.startYears = response.data;
-            }
-        })
+
     }
 
     clearFilters(){
@@ -94,7 +94,7 @@ export default class AppController{
                     this.DataFactory.setEmission(response.data);
                     this.$scope.$broadcast('emissionsLoadedEvent', {
                         data: response.data
-                    })
+                    });
                     this.$scope.$broadcast('hideSidebar');
                 }
             })
@@ -111,7 +111,7 @@ export default class AppController{
     changeChartData() {
         this.$scope.$broadcast('chartDataChangedEvent', {
             aggregation: this.selectedChart.name,
-            chartTitle: this.selectedChart.chartTitle,
+            chartTitle: this.selectedChart.chartTitle
         })
     }
 }

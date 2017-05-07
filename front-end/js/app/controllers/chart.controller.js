@@ -11,7 +11,7 @@ export default class MapController{
         this._createChart('Emission per Country');
 
         this.$scope.$on('chartDataChangedEvent', (event, data) => {
-            this.rawData = DataFactory.getChartData(data.aggregation)
+            this.rawData = DataFactory.getChartData(data.aggregation);
             this._parseChartData();
             this._createChart(data.chartTitle);
         })

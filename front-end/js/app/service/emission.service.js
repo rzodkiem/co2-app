@@ -5,12 +5,12 @@ export default class EmissionService{
         this.$http = $http;
     }
 
-    getEmissions(country, sector, startYear, endYear){
+    getEmissions(country){
         this.$http({
             method: 'POST',
             url: '/emission/emissions',
             data:{
-                country: country,
+                country: country
 
             }
         })
